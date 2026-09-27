@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TSCP · Receipts for Machine Claims</title>
+<meta name="description" content="TSCP: evidence-chain software for binding machine claims to artifacts, hashes, and test records, with a machine-checked verification core.">
+<style>
+  :root{
+    --paper:#f7f5f0; --ink:#211d18; --soft:#6b655c; --line:#d8d2c6;
+    --accent:#9a3b26; --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);
+       font:16px/1.65 Georgia,"Times New Roman",serif;}
+  .wrap{max-width:720px;margin:0 auto;padding:64px 24px 40px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}
+  a:hover{border-bottom-color:var(--accent)}
+  header{margin-bottom:72px}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.25em;
+         text-transform:uppercase;color:var(--soft);margin-bottom:20px}
+  h1{font-size:56px;line-height:1.05;font-weight:400;letter-spacing:-.01em}
+  .tagline{font-size:24px;font-style:italic;color:var(--soft);margin:14px 0 26px}
+  .lede{font-size:18px;max-width:56ch}
+  h2{font-size:28px;font-weight:400;margin:72px 0 18px}
+  section p{max-width:64ch;margin-bottom:14px}
+  section ul{margin:10px 0 18px 0;list-style:none}
+  section li{padding:9px 0;border-top:1px solid var(--line);max-width:64ch}
+  section li:first-child{border-top:0}
+  .story{border-left:3px solid var(--accent);padding:6px 0 6px 22px;margin:72px 0}
+  .story h2{margin-top:0}
+  /* the receipt */
+  .receipt{background:#fffdf8;border:1px solid var(--line);padding:28px 26px;
+           font-family:var(--mono);font-size:13px;line-height:1.8;margin-top:18px}
+  .receipt .rc{letter-spacing:.18em;text-align:center;text-transform:uppercase;
+               color:var(--soft);margin-bottom:14px}
+  .receipt .row{display:flex;justify-content:space-between;gap:16px}
+  .receipt .row span:last-child{text-align:right;white-space:nowrap}
+  .receipt .sep{border-top:1px dashed var(--line);margin:12px 0}
+  .receipt .notclaimed li{list-style:none;padding:3px 0}
+  .receipt .notclaimed{margin:0}
+  .note{font-family:Georgia,serif;font-style:italic;color:var(--soft);margin-top:14px}
+  .connect li{padding:9px 0;border-top:1px solid var(--line)}
+  .connect li:first-child{border-top:0}
+  .connect .what{color:var(--soft)}
+  footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);
+         font-family:var(--mono);font-size:12px;color:var(--soft);
+         display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">TSCP · tscp.store</div>
+  <h1>Receipts for<br>Machine Claims</h1>
+  <p class="tagline">Every claim, with its receipt attached.</p>
+  <p class="lede">When a machine claims a result, the claim should arrive with its receipt:
+  the exact artifact, its hash, and the record of how it was tested. TSCP is working
+  software for building evidence chains that keep claims and their evidence attached.</p>
+</header>
+
+<section class="story">
+  <h2>We corrected ourselves in public</h2>
+  <p>Our earliest headline benchmark claimed the AVX-512 kernels ran 9.15&times; faster
+  than scalar code. A number that good deserved suspicion, so we rebuilt the
+  measurement: 50 samples, dual runs, a frozen and documented protocol. The result
+  came out at 1.27&times;. We published the correction ourselves, and both numbers
+  stay visible on this page. That correction is the founding story of this project:
+  evidence over flattery, including our own.</p>
+</section>
+
+<section>
+  <h2>What TSCP is</h2>
+  <p>Working evidence-chain software with a machine-checked verification core, built
+  to answer one question: how does anyone check what a machine claims about its
+  own work?</p>
+  <ul>
+    <li><strong>Evidence chains.</strong> Each claim is bound to its bytes. Artifacts,
+    hashes, and test records stay attached to the claims they support.</li>
+    <li><strong>A machine-checked core.</strong> The critical arithmetic
+    (Montgomery reduction) is verified in Lean 4, with exact theorem and gap counts
+    published below.</li>
+    <li><strong>On-chain anchoring.</strong> Evidence digests are anchored on the Sepolia testnet, providing a public reference against which later record changes can be detected.</li>
+    <li><strong>Public review packages.</strong> Reviewer-access software, benchmarks, and the evidence chain are public under Apache-2.0. Some additional development and proof sources remain private.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>The receipt</h2>
+  <p>Exact numbers, exactly scoped. No more, no less.</p>
+  <div class="receipt">
+    <div class="rc">TSCP · scoped evidence record</div>
+    <div class="row"><span>Montgomery reduction core, Montgomery.lean</span>
+         <span>12 theorems, 0 sorry</span></div>
+    <div class="row"><span>Live formal corpus, zkSHA-Rx</span>
+         <span>31 declarations, 4 open gaps</span></div>
+    <div class="row"><span>Gaps recorded, all in MachineRefinements.lean</span>
+         <span>not hidden</span></div>
+    <div class="row"><span>AVX-512 vs scalar, geomean, AMD Zen 5</span>
+         <span>1.27&times; (1.265&times;–1.276&times;)</span></div>
+    <div class="row"><span>Protocol: frozen, 50 samples, dual-run</span>
+         <span>documented</span></div>
+    <div class="row"><span>Evidence digests</span>
+         <span>anchored on-chain, Sepolia</span></div>
+    <div class="sep"></div>
+    <div class="rc">Not claimed</div>
+    <ul class="notclaimed">
+      <li>The 1.27&times; result is documented and self-published. It is not
+      independently replicated.</li>
+      <li>No external cryptographic audit has been performed.</li>
+      <li>No production-ready system. No end-to-end prover acceleration claim.</li>
+      <li>Known proof gaps are recorded and visible, not hidden.</li>
+    </ul>
+    <div class="sep"></div>
+    <p class="note">Claim surfaces and verification documentation live in the public repositories linked below.</p>
+  </div>
+</section>
+
+<section class="connect">
+  <h2>Connect</h2>
+  <ul>
+    <li><a href="https://www.manifund.org/projects/receipts-for-machine-claims">Manifund:
+    Receipts for Machine Claims</a> · <span class="what">the project's public funding
+    page, live now</span></li>
+    <li><a href="https://github.com/Cartilage-Stairwells/tscp-anchor">tscp-anchor</a> · <span class="what">Rust proof system, deterministic builds, CI verification</span></li>
+    <li><a href="https://github.com/Cartilage-Stairwells/zksha-rx-reviewer-access">zksha-rx-reviewer-access</a> · <span class="what">frozen reviewer snapshot: implementation, benchmarks, evidence
+    chain, review guide</span></li>
+    <li><a href="https://github.com/Cartilage-Stairwells/canonical-lexicon">canonical-lexicon</a> · <span class="what">terminology, acronyms, and nomenclature authority</span></li>
+    <li><a href="https://www.instagram.com/seansanguis/">Instagram: @seansanguis</a> · <span class="what">the correction story, told in public</span></li>
+  </ul>
+</section>
+
+<footer>
+  <span>TSCP · tscp.store · 2026</span>
+  <span>Claims are bound to their artifacts.</span>
+</footer>
+
+</div>
+</body>
+</html>
