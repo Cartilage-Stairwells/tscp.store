@@ -79,7 +79,7 @@
     <li><strong>Evidence chains.</strong> Each claim is bound to its bytes. Artifacts,
     hashes, and test records stay attached to the claims they support.</li>
     <li><strong>A machine-checked core.</strong> The critical arithmetic
-    (Montgomery reduction) is verified in Lean 4, with exact theorem and gap counts
+    (Montgomery reduction) is verified in Lean 4, with exact, file-scoped counts
     published below.</li>
     <li><strong>On-chain anchoring.</strong> Evidence digests are anchored on the Sepolia testnet, providing a public reference against which later record changes can be detected.</li>
     <li><strong>Public review packages.</strong> Reviewer-access software, benchmarks, and the evidence chain are public under Apache-2.0. Some additional development and proof sources remain private.</li>
@@ -94,9 +94,9 @@
     <div class="row"><span>Montgomery reduction core, Montgomery.lean</span>
          <span>12 theorems, 0 sorry</span></div>
     <div class="row"><span>Live formal corpus, zkSHA-Rx</span>
-         <span>31 declarations, 4 open gaps</span></div>
-    <div class="row"><span>Gaps recorded, all in MachineRefinements.lean</span>
-         <span>not hidden</span></div>
+         <span>31 theorems; stages C3–C6 open</span></div>
+    <div class="row"><span>Open stages: C3–C6 refinements, MachineRefinements.lean</span>
+         <span>future work, not claimed proofs</span></div>
     <div class="row"><span>AVX-512 vs scalar, geomean, AMD Zen 5</span>
          <span>1.27&times; (1.265&times;–1.276&times;)</span></div>
     <div class="row"><span>Protocol: frozen, 50 samples, dual-run</span>
@@ -110,7 +110,7 @@
       independently replicated.</li>
       <li>No external cryptographic audit has been performed.</li>
       <li>No production-ready system. No end-to-end prover acceleration claim.</li>
-      <li>Known proof gaps are recorded and visible, not hidden.</li>
+      <li>Remaining formalization stages are listed as open work, not claimed proofs.</li>
     </ul>
     <div class="sep"></div>
     <p class="note">Claim surfaces and verification documentation live in the public repositories linked below.</p>
